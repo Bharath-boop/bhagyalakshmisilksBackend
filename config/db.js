@@ -22,18 +22,19 @@
 
 
 // config/db.js
-
 const mysql = require("mysql2");
 
 const pool = mysql.createPool({
-  host: "srv1826.hstgr.io",
-  port: 3306,
-  user: "u544101204_blsilks_admin",
-  password: "YOUR_PASSWORD",
-  database: "u544101204_bl_silks_db",
+  host: "gateway01.ap-southeast-1.prod.aws.tidbcloud.com",
+  port: 4000,
+  user: "4GSA3Bhy84kQDRx.root",
+  password: "98EqIDHBgb9BtdP9",
+  database: "test",
+  ssl: {
+    rejectUnauthorized: true
+  },
   waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
+  connectionLimit: 10
 });
 
 const db = pool.promise();
