@@ -6,11 +6,21 @@ const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 // Create email transporter (using Gmail)
+// const transporter = nodemailer.createTransport({
+//   service: "gmail",
+//   auth: {
+//     user: "bharathboopathi51550@gmail.com",
+//     pass: "itho rbxn aeff wsbk", // Use Gmail App Password (not regular password)
+//   },
+// });
+
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS, // Use Gmail App Password (not regular password)
+    user: "bharathboopathi51550@gmail.com",
+    pass: "ithorbxnaeffwsbk",
   },
 });
 
@@ -61,7 +71,7 @@ async function sendOTP(req, res) {
 
     // Send email with OTP
     const mailOptions = {
-      from: `"Bhagyalakshmi Silks" <${process.env.EMAIL_USER}>`,
+      from: `"Bhagyalakshmi Silks" <bharathboopathi51550@gmail.com>`,
       to: email,
       subject: "Your OTP for Order Verification - Bhagyalakshmi Silks",
       html: `
